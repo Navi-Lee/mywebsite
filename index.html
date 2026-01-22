@@ -23,7 +23,7 @@ body
   background-color: #ffffff;
 }
 h1{
-  font-size: 59px;
+  font-size: 4vw;
 }
 .header{
   background-color: #1b67f4;
@@ -48,6 +48,7 @@ h1{
   gap: 30px;
   background-color: #1b67f4;
   margin: 0px 0 10px 0;
+    flex-wrap: wrap; /* 超小屏幕自动换行 */
 }
 .personal-school{
   text-align: center;
@@ -71,17 +72,18 @@ h1{
   color: #ffffff;
 }
 p{
-  font-size: 28px;
+  font-size: 3.5vw;
   text-indent: 2em;
 }
 h2{
-  font-size: 32px;
+  font-size: 5vw;
 }
 
 
 .innerbox {
   margin: 0px auto;
   max-width: 1300px;
+    width:90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,6 +104,9 @@ h2{
 .innerbox1 img{
   display: block;
   margin: 0 auto;
+    width: 100%;
+  max-width: 500px;
+  height: auto;
 }
 </style>
 <body>
@@ -149,3 +154,4 @@ h2{
     </div>
 </body>
 </html>
+
