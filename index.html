@@ -6,45 +6,81 @@
     
     <title>NaviLeeNavi</title>
     <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 <style>
 *{
   text-decoration: none;
-  font-family: "Times New Roman", "宋体";
+  font-family: 'Poppins', "Times New Roman", "宋体";
   font-weight: bold;
-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-hr
-{
-  border: 0px;
-  height: 5px;
-  width: 100%;
-  background-color: #000000;
+
+html {
+  scroll-behavior: smooth;
 }
-body
-{
-  margin:0;
-  background-color: #ffffff;
+
+body {
+  margin: 0;
+  background-color: #f5f5f5;
+  color: #333;
+  overflow-x: hidden;
 }
-h1{
-  font-size: 59px;
-}
-.header{
-  background-color: #1b67f4;
+
+/* 渐变背景 */
+.header {
+  background: linear-gradient(135deg, #1b67f4, #6a11cb);
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    width:100%;
-  padding: 20px;
+  width: 100%;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
-.header h1{
-  transition: transform 0.2s ease-in-out;
+
+/* 背景动画效果 */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+  animation: float 20s linear infinite;
 }
-.header h1:hover{
-  transform: scale(1.04);
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+  }
+}
+
+.header h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 1s ease-out;
+}
+
+.header h1:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
 /* 新增个人信息容器样式 */
@@ -52,73 +88,363 @@ h1{
   display: flex;
   justify-content: center;
   gap: 30px;
-  background-color: #1b67f4;
-  margin: 0px 0 10px 0;
-flex-wrap:wrap;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out 0.3s both;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
-.personal-info div a{
-word-break: break-all;
-}
-.personal-school{
-  text-align: center;
-  color: #ffffff ;
-  font-size: 21px;
-}
-
-
 
 .personal-info div {
   text-align: center;
-  color: #ffffff ;
-  font-size: 25px;
-  /* 变大效果 */
-  transition: transform 0.2s ease-in-out;
-    flex-wrap:wrap;
-}
-.personal-info div:hover {
-  transform: scale(1.04);
-}
-.personal-info div a{
   color: #ffffff;
-}
-p{
-  font-size: 28px;
-  text-indent: 2em;
-}
-h2{
-  font-size: 32px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+.personal-info div:hover {
+  transform: translateY(-5px);
+  color: #ffd700;
+}
+
+.personal-info div a {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.personal-info div a:hover {
+  color: #ffd700;
+}
+
+.personal-school {
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+/* 分隔线样式 */
+hr {
+  border: 0;
+  height: 3px;
+  width: 80%;
+  max-width: 800px;
+  background: linear-gradient(90deg, transparent, #1b67f4, transparent);
+  margin: 40px auto;
+  animation: grow 1.5s ease-out;
+}
+
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 80%;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-indent: 2em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #1b67f4;
+  margin: 40px 0 20px;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #1b67f4, #6a11cb);
+  border-radius: 2px;
+  animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
 
 .innerbox {
-  margin: 0px auto;
-  max-width: 1300px;
-  display: flex;
-width:90%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* 加一个左右的border */
-  border-left: 5px solid #1b67f4;
-  border-right: 5px solid #1b67f4;
-  padding: 20px;
-
-  
-  
-
+  margin: 40px auto;
+  max-width: 1000px;
+  width: 90%;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1.5s ease-out;
+  position: relative;
+  overflow: hidden;
 }
-.innerbox1{
-  
-  
+
+.innerbox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #1b67f4, #6a11cb);
 }
-.innerbox1 img{
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.innerbox1 {
+  margin-bottom: 40px;
+}
+
+.innerbox1 img {
   display: block;
-  margin: 0 auto;
-    width:100%;
-    max-width:500px;
-    height:auto;
+  margin: 30px auto;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  animation: fadeIn 1s ease-out 0.9s both;
+}
+
+.innerbox1 img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* 卡片式布局 */
+.card {
+  background: #f9f9f9;
+  border-radius: 15px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  animation: fadeInUp 1s ease-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* 时间线样式 */
+.timeline {
+  position: relative;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(180deg, #1b67f4, #6a11cb);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 30px;
+  animation: fadeInLeft 1s ease-out;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 4px solid #1b67f4;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover::before {
+  transform: scale(1.2);
+  background: #1b67f4;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .personal-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .personal-info div {
+    font-size: 1rem;
+  }
+  
+  .innerbox {
+    padding: 20px;
+    margin: 20px auto;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .header {
+    padding: 40px 15px;
+  }
+  
+  .innerbox {
+    padding: 15px;
+    width: 95%;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 时间线容器样式 */
+.timeline-container {
+  position: relative;
+  margin-top: 20px;
+}
+
+/* 切换按钮样式 */
+.toggle-btn {
+  display: block;
+  margin: 30px auto 0;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #1b67f4, #6a11cb);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-btn:active {
+  transform: translateY(0);
+}
+
+/* 默认只显示前三条 */
+.timeline-item:nth-child(n+4) {
+  display: none;
+}
+
+/* 展开时显示所有 */
+.timeline.expanded .timeline-item:nth-child(n+4) {
+  display: block;
 }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggle-log');
+    const timeline = document.querySelector('.timeline');
+    
+    toggleBtn.addEventListener('click', function() {
+      timeline.classList.toggle('expanded');
+      
+      if (timeline.classList.contains('expanded')) {
+        toggleBtn.textContent = '收起';
+      } else {
+        toggleBtn.textContent = '显示全部';
+      }
+    });
+  });
+</script>
 <body>
     <div class="header">
         <h1>This is Navi Lee.</h1>
@@ -126,18 +452,17 @@ width:90%;
     
     <!-- 将个人信息移到header外部 -->
     <div class="personal-info">
-        <div class="github"><a href="https://github.com/Navi-lee">Github:Navi-lee</a></div>
+        <div class="github"><a href="https://github.com/Navi-lee"><i class="fab fa-github"></i> Github: Navi-lee</a></div>
         
-        <div class="email"><a href="mailto:LeeNavi@foxmail.com">Email:LeeNavi@foxmail.com</a></div>
+        <div class="email"><a href="mailto:LeeNavi@foxmail.com"><i class="fas fa-envelope"></i> Email: LeeNavi@foxmail.com</a></div>
     </div>
-    <div class="personal-school">太原理工大学|软件工程|2029届</div>
+    <div class="personal-school">太原理工大学 | 软件工程 | 2029届</div>
     </div>
     
     <div class="innerbox">
-        <div class="innerbox1">
+        <div class="innerbox1 card">
           <h2>About Me</h2>
-        </div>
-      <div class="innerbox1"><p>我是Navi Lee，这是一个个人网站，用于展示项目之类的内容。当然目前还没有任何可供展示的。
+          <p>我是Navi Lee，这是一个个人网站，用于展示项目之类的内容。当然目前还没有任何可供展示的。
         目前已经学了css，但还没有学javascript。先做个网站的原型吧。
         </p>
         <p>
@@ -149,20 +474,33 @@ width:90%;
         <p>
           放个图片占位置吧。
         </p>
-        <img src="./touxiang.png" alt="Navi Lee" width="500" height="500">
+        <img src="./touxiang.png" alt="Navi Lee">
         <p>写于2026/1/19</p>
-    </div>
+        </div>
     <hr>
     <div class="innerbox1">
         
       <h2>更新日志</h2>
       </div>
       <div class="innerbox1">
-        <p>2026/1/21 购买navilee.com域名，审核中。目前可从navilee.vercel.app访问。
-        为什么css样式这么难调这谁开发的这玩意图形化一点不好吗</p>
-          <p>2026/1/22 绑定了navilee.com域名并且把它重新定向到了www.navilee.com。增加了flexwrap和width百分比以让它适配移动端。增加了一个48*48的favicon。</p>
-          <p>2026/1/29 第一次写README，虽然我并不懂什么markdown语法，虽然也只写了一句话。。。另外发现网站被google和bing爬到了，搜navilee就可以出来。算是挺惊喜了，因为以前用eu.org还得自己手动提交。。。</p>
-          <p>2026/2/5 今天把这个仓库克隆到了trae上，以后就用这个来写了。不再采用原始的复制粘贴代码。现在是测试。</p>
+        <div class="timeline-container">
+          <div class="timeline">
+            <div class="timeline-item">
+              <p>2026/1/21 购买navilee.com域名，审核中。目前可从navilee.vercel.app访问。
+            为什么css样式这么难调这谁开发的这玩意图形化一点不好吗</p>
+            </div>
+            <div class="timeline-item">
+              <p>2026/1/22 绑定了navilee.com域名并且把它重新定向到了www.navilee.com。增加了flexwrap和width百分比以让它适配移动端。增加了一个48*48的favicon。</p>
+            </div>
+            <div class="timeline-item">
+              <p>2026/1/29 第一次写README，虽然我并不懂什么markdown语法，虽然也只写了一句话。。。另外发现网站被google和bing爬到了，搜navilee就可以出来。算是挺惊喜了，因为以前用eu.org还得自己手动提交。。。</p>
+            </div>
+            <div class="timeline-item">
+              <p>2026/2/5 今天把这个仓库克隆到了trae上，以后就用这个来写了。不再采用原始的复制粘贴代码。现在是测试。</p>
+            </div>
+          </div>
+          <button id="toggle-log" class="toggle-btn">显示全部</button>
+        </div>
         </div>
     </div>
 </body>
